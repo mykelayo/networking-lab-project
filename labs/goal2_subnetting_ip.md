@@ -51,7 +51,7 @@ Hosts:
 - Laptop (Wireless): DHCP later, manual for now: 10.0.30.10/24
 - Server (Management): 10.0.99.50/24
 
-![Logical Topology](labs/topology/logical-topology.png)
+![Logical Topology](https://github.com/mykelayo/networking-lab-project/blob/main/topology/logical-topology.png)
 
 ```
 - VLAN 10 (Data): 10.0.10.0/24, Gateway: 10.0.10.1 (HSRP Virtual)
@@ -106,7 +106,7 @@ Hosts:
    - Set Management Interface: IP 10.0.99.10/24, Gateway 10.0.99.1, VLAN 99.
    - Save and reboot if needed.
  
-   ![WLC Management Interface](labs/topology/wlc-management-interface.png)   
+   ![WLC Management Interface](https://github.com/mykelayo/networking-lab-project/blob/main/topology/wlc-management-interface.png)   
 
 6. **Configure End Devices** (Manual IPs for now, DHCP in Goal 8):
    - On PCs/Laptop/Server: Click device > Desktop > IP Configuration > Static.
@@ -116,17 +116,17 @@ Hosts:
 
 ### Verification
    - `show ip interface brief` on each device: Confirm IPs assigned, interfaces up/up.
-   ![MLSW1 IP Interface Brief](labs/topology/MLSW1-ip-interface-brief.png)
+   ![MLSW1 IP Interface Brief](https://github.com/mykelayo/networking-lab-project/blob/main/topology/MLSW1-ip-interface-brief.png)
    - Basic pings (within same subnet only, no routing yet):
    - From MLSW1: Ping 10.0.1.2 (Edge-R)
-   ![MLSW1 to Edge-R Ping Test](labs/topology/MLSW1-to-EDGE-R.png)
+   ![MLSW1 to Edge-R Ping Test](https://github.com/mykelayo/networking-lab-project/blob/main/topology/MLSW1-to-EDGE-R.png)
    - From Edge-R: Ping 10.0.1.1 and 10.0.1.5.
-   ![Edge-R to MLSW1 Ping Test](labs/topology/Edge-R-to-MLSW1.png)
-   ![Edge-R to MLSW2 Ping Test](labs/topology/Edge-R-to-MLSW2.png)
+   ![Edge-R to MLSW1 Ping Test](https://github.com/mykelayo/networking-lab-project/blob/main/topology/Edge-R-to-MLSW1.png)
+   ![Edge-R to MLSW2 Ping Test](topology/Edge-R-to-MLSW2.png)
    - From ISP-R: Ping 203.0.113.1
-   ![ISP-R to Edge-R Ping Test](labs/topology/ISP-R-to-Edge-R.png)
+   ![ISP-R to Edge-R Ping Test](https://github.com/mykelayo/networking-lab-project/blob/main/topology/ISP-R-to-Edge-R.png)
    - Hosts: Once VLANs/trunked, ping within VLAN (e.g., PC1 ping PC2).
-   ![PC1 to PC2 Ping Test](labs/topology/PC1-to-PC2.png)
+   ![PC1 to PC2 Ping Test](https://github.com/mykelayo/networking-lab-project/blob/main/topology/PC1-to-PC2.png)
 
 ### Potential Issues and Tips
 - SVIs Down: Normal until VLANs created (Goal 3), they'll come up then.

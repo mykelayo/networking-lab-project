@@ -12,10 +12,10 @@ In this initial lab, we'll design the network topology, add devices in Packet Tr
 - **Feature Coverage**: Allows router-on-a-stick (subinterfaces on CME-R), SVI routing (on MLSWs), and multi-router dynamics.
 
 ### Logical Topology
-![Logical Topology](labs/topology/logical-topology.png)
+![Logical Topology](https://github.com/mykelayo/networking-lab-project/blob/main/topology/logical-topology.png)
 
 ### Physical Topology
-![Physical Topology on PT](labs/topology/physical-topology.png)
+![Physical Topology on PT](https://github.com/mykelayo/networking-lab-project/blob/main/topology/physical-topology.png)
 
 #### Steps in Packet Tracer
 1. **Open Packet Tracer and Add Devices**:
