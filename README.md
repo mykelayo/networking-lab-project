@@ -87,7 +87,7 @@ These will be integrated across the goals where relevant.
   - Laptop (Wireless).
   - Server (For DNS/syslog).
 
-### Physical Topology 
+### Logical Topology 
 ![Logical Topology](topology/logical-topology.png)
 
 - Connections:
