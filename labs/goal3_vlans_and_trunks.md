@@ -189,7 +189,7 @@ On **MLSW1** (WLC is connected here):
  switchport nonegotiate
 ```
 
-#### 6. Additional Hardening (All Switches)
+#### 6. Shutdown all unused port (All Switches)
 On **MLSW1**:
 ```
  conf t
@@ -199,7 +199,7 @@ On **MLSW1**:
  exit
 ```
 
-On **MLSW2:
+On **MLSW2**:
 ```
  conf t                    
  interface range FastEthernet0/5 - 24, GigabitEthernet0/1 - 2
@@ -208,7 +208,7 @@ On **MLSW2:
  exit
 ```
 
-On **ASW:
+On **ASW**:
 ```
  conf t
  interface range FastEthernet0/8 - 24, GigabitEthernet0/1 - 2

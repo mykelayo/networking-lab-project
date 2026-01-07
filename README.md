@@ -27,7 +27,9 @@ networking-lab-project/
 ├── labs/                   # Detailed Markdown docs for each goal
 │   ├── goal1_design_and_setup.md
 │   ├── goal2_subnetting_and_ip.md
-│   └── ...                 # More goals will be added once completed
+│   ├── goal3_vlans_and_trunks.md
+│   └── goal4_stp_rstp.md
+│   ... # More goals will be added once completed
 └── pkt-files/              # Packet Tracer .pkt files saved after each goal
     └── networking-lab-project.pkt
 ```
