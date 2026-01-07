@@ -242,11 +242,11 @@ Run these to confirm everything works:
 
 On any switch:
 - `show vlan brief` → All VLANs present and correct ports assigned
-![VLANs config](labs/topology/vlans-brief.png)
+![VLANs config](main/topology/vlans-brief.png)
 - `show interfaces trunk` → Trunks up, native VLAN 99, allowed lists correct
-![Interface trunk status](labs/topology/trunks-status.png)
+![Interface trunk status](topology/trunks-status.png)
 - `show etherchannel summary` → Port-channels 1 and 2 in (SU) state (bundled)
-![Etherchannel between MLSW1 and MLSW2](labs/topology/ether-sum.png)
+![Etherchannel between MLSW1 and MLSW2](main/topology/ether-sum.png)
 - `show interfaces switchport` → Confirm access/trunk modes, voice VLANs
 ![Interfaces Switchport Trunk for ASW Fa0/1](labs/topology/ASW-to-MLSW-int-trunk.png)
 ![Interfaces Switchport Access for ASW Fa0/3](labs/topology/ASW-to-IP-Phone-PC1-int-sw.png)
