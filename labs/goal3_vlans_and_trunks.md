@@ -240,12 +240,6 @@ From MLSW1:
 - `show ip interface brief` → VLAN 10,20,30,99 interfaces now **up/up**
 ![MLSW1 IP interface](https://github.com/mykelayo/networking-lab-project/blob/main/topology/MLSW1-ip-int-br.png)
 
-### Potential Issues & Tips
-- **EtherChannel not forming?** Ensure same port groups, mode (active/active for LACP), and cabling.
-- **Trunk not allowing VLANs?** Double-check `allowed vlan` lists.
-- **SVIs still down?** Ensure at least one active port in the VLAN (e.g., connect a PC).
-- **WLC trunk?** WLC in PT needs management in VLAN 99; client traffic tagged in VLAN 30.
-
 ### What We Achieved
 - All devices now communicate within their respective VLANs (intra-VLAN connectivity working).
 - Redundant trunk paths established between core switches (MLSW1 ↔ MLSW2 via EtherChannel).
