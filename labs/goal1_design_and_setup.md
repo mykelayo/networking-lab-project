@@ -60,13 +60,7 @@ In this initial lab, we'll design the network topology, add devices in Packet Tr
    - MOTD Banner: `banner motd # Welcome to My Networking Lab Project #`.
    - Save configs: `end`, `wr`.
 
-4. **Verification**:
-   - `show run | section hostname` to confirm names.
-   - `show int status` to ensure ports are up/up (green links in PT).
-   - If links are down, check cabling types (e.g., crossover if needed, but PT auto-detects).
-   - No pings yet—interfaces have no IPs.
-
-5. **Potential Issues and Tips**:
+4. **Potential Issues and Tips**:
    - PT Crashing: Add devices one by one, save often. Use logical workspace view.
    - WLC in PT: Limited simulation; focus on basics like WLAN creation later.
    - Why Basic Setup First? Prevents confusion in later labs and demonstrates initial hardening.

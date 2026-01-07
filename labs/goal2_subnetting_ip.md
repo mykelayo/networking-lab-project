@@ -1,5 +1,5 @@
 # Goal 2: Subnetting and IP Configuration
-Now that the topology is designed and devices are basically set up, we'll move to subnetting and IP addressing. This lab focuses on planning the IP address scheme, calculating subnets, and assigning static IP addresses to interfaces, loopbacks, and hosts. We'll use a private address space for the internal network and simulate public IPs for the WAN link to ISP-R. No dynamic routing or VLANs yet—that's later—so we'll treat trunk links as access ports temporarily for IP assignment where needed (we'll change them to trunks in Goal 3). This allows basic connectivity testing via pings.
+Now that the topology is designed and devices are basically set up, we'll move to subnetting and IP addressing. This lab focuses on planning the IP address scheme, calculating subnets, and assigning static IP addresses to interfaces, loopbacks, and hosts. We'll use a private address space for the internal network and simulate public IPs for the WAN link to ISP-R. No dynamic routing or VLANs yet, that's later, so we'll treat trunk links as access ports temporarily for IP assignment where needed (we'll change them to trunks in Goal 3). This allows basic connectivity testing via pings.
 
 ### Objective
 - Design an IP addressing scheme using subnetting to efficiently allocate addresses for VLANs, point-to-point links, management, and loopbacks. 
@@ -41,7 +41,7 @@ Step-by-step subnetting:
 
 For CME-R: Since it's trunked to ASW, we'll add subinterfaces for VLANs 20 (Voice) and 99 (Management) for router-on-a-stick, even if MLSWs handle main routing. CME-R Gi0/0.20: 10.0.20.254/24 (backup gateway for CME), Gi0/0.99: 10.0.99.254/24.
 
-WLC Management: 10.0.99.10/24 (configured in WLC CLI).
+WLC Management: 10.0.99.10/24 (configured in WLC interface).
 
 Hosts:
 - PC1 (Data): 10.0.10.10/24, gateway 10.0.10.1
@@ -51,9 +51,9 @@ Hosts:
 - Laptop (Wireless): DHCP later, manual for now: 10.0.30.10/24
 - Server (Management): 10.0.99.50/24
 
-Update `topology/logical-topology.txt` with this:
+![Logical Topology](topology/logical-topology.png)
+
 ```
-Logical Topology:
 - VLAN 10 (Data): 10.0.10.0/24, Gateway: 10.0.10.1 (HSRP Virtual)
 - VLAN 20 (Voice): 10.0.20.0/24, Gateway: 10.0.20.1
 - VLAN 30 (Wireless): 10.0.30.0/24, Gateway: 10.0.30.1
@@ -74,7 +74,7 @@ Logical Topology:
      - Repeat for VLAN 20: 10.0.20.2/24 or .3
      - VLAN 30: 10.0.30.2/24 or .3
      - VLAN 99: 10.0.99.2/24 or .3
-     - Note: VLANs not created yet (Goal 3), but SVIs can be configured— they'll be down until then.
+     - Note: VLANs not created yet (Goal 3), but SVIs can be configured, they'll be down until then.
 
 3. **Configure Router Interfaces**:
    - On Edge-R:
@@ -104,7 +104,9 @@ Logical Topology:
 5. **Configure WLC Management**:
    - Access WLC GUI (click device > GUI tab) or CLI.
    - Set Management Interface: IP 10.0.99.10/24, Gateway 10.0.99.1, VLAN 99.
-   - Save and reboot if needed (PT simulation limited).
+   - Save and reboot if needed.
+ 
+   ![WLC Management Interface](topology/wlc-management-interface.png)   
 
 6. **Configure End Devices** (Manual IPs for now, DHCP in Goal 8):
    - On PCs/Laptop/Server: Click device > Desktop > IP Configuration > Static.
@@ -113,18 +115,21 @@ Logical Topology:
 7. **Save Configs**: On all devices, `end`, `wr`.
 
 ### Verification
-- `show ip interface brief` on each device: Confirm IPs assigned, interfaces up/up.
-- Basic pings (within same subnet only, no routing yet):
-  - From MLSW1: Ping 10.0.1.2 (Edge-R), it should work.
-  - From Edge-R: Ping 10.0.1.1 and 10.0.1.5.
-  - From ISP-R: Ping 203.0.113.1.
-  - Hosts: Once VLANs/trunked (next goal), ping within VLAN (e.g., PC1 ping PC2).
-- `show run | section interface` to verify configs.
-- If pings fail: Check cabling, no shut, correct subnets/masks.
+   - `show ip interface brief` on each device: Confirm IPs assigned, interfaces up/up.
+   ![MLSW1 IP Interface Brief](MLSW1-ip-interface-brief.png)
+   - Basic pings (within same subnet only, no routing yet):
+   - From MLSW1: Ping 10.0.1.2 (Edge-R)
+   ![MLSW1 to Edge-R Ping Test](MLSW1-to-EDGE-R.png)
+   - From Edge-R: Ping 10.0.1.1 and 10.0.1.5.
+   ![Edge-R to MLSW1 Ping Test](Edge-R-to-MLSW1.png)
+   ![Edge-R to MLSW2 Ping Test](Edge-R-to-MLSW2.png)
+   - From ISP-R: Ping 203.0.113.1
+   ![ISP-R to Edge-R Ping Test](ISP-R-to-Edge-R.png)
+   - Hosts: Once VLANs/trunked, ping within VLAN (e.g., PC1 ping PC2).
+   ![PC1 to PC2 Ping Test](PC1-to-PC2.png)
 
 ### Potential Issues and Tips
 - SVIs Down: Normal until VLANs created (Goal 3), they'll come up then.
-- PT Limitations: WLC GUI may be finicky, so use CLI if possible. If crashes, configure in batches.
 - Subnet Overlaps: Double-check calculations to avoid.
 - Why Loopbacks Early? They don't depend on physical links, perfect for router IDs in dynamic routing.
 - Why Subinterfaces on CME-R? Demonstrates encapsulation, useful for voice traffic handling.
