@@ -71,7 +71,7 @@ This design mimics a small-to-medium enterprise campus network with distribution
 | PC1/PC2  | PC-PT       | End Devices (Data VLAN)           | Testing, ping sources                    |
 | IP-Phone1/2 | IP Phone 7960 | Voice Endpoints                | CME registration, voice VLAN             |
 | Laptop   | Laptop-PT   | Wireless Client                   | Associates to WLAN                        |
-| Server   | Server-PT   | Utility Server                    | DNS, Syslog, DHCP (optional)             |
+| Server   | Server-PT   | Utility Server                    | DNS, Syslog, DHCP             |
 
 ### Steps in Packet Tracer
 
@@ -83,7 +83,6 @@ This design mimics a small-to-medium enterprise campus network with distribution
 
 #### 2. Cable the Topology
 - Use the connections table above.
-- Tips:
   - Serial link: Place DCE cable end on ISP-R → auto-prompt for `clock rate 64000`.
   - Phone daisy-chain: Connect ASW → Phone Ethernet port, then Phone PC port → PC.
   - Power on all devices (click power button if off).
@@ -148,7 +147,7 @@ write memory
 ![MLSW1 hostname](https://github.com/mykelayo/networking-lab-project/blob/main/topology/hostname.png)
 
 ### What We Achieved
-- Professional, redundant, feature-rich topology built and documented.
+- Clean, redundant, feature-rich topology built and documented.
 - All devices configured with secure basic settings.
 - Clean starting point for progressive configuration.
 - Visual and textual documentation for portfolio impact.

@@ -138,13 +138,15 @@ write memory
    ```
    On **MLSW2**:
    → Opposite for VLANs 30,99.
-   ![MLSW1 spanning-tree cli](https://github.com/mykelayo/networking-lab-project/blob/main/topology/cli-span-tree-veri.png)
+
+![MLSW1 spanning-tree cli](https://github.com/mykelayo/networking-lab-project/blob/main/topology/cli-span-tree-veri.png)
 
 2. **EtherChannel Treatment**
    ```
    show spanning-tree vlan 10
    ```
-   ![Port-Channel State](https://github.com/mykelayo/networking-lab-project/blob/main/topology/ether-treatment.png)
+![Port-Channel State](https://github.com/mykelayo/networking-lab-project/blob/main/topology/ether-treatment.png)
+
    → Po1 between MLSW1↔MLSW2 is Forwarding (single logical link).
 
 ### What We Achieved
